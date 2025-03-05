@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Look")]
     public Transform cameraContainer;
+    public Transform thirdCamera;
+    public Camera mainCamera; // 현재 활성화된 카메라
+    private bool firstCamera = true;
     public float minXLook;
     public float maxXLook;
     private float camCurXRot;
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        SwitchFirstView(); // 기본적으로 1인칭 시작
     }
 
     private void FixedUpdate()
@@ -45,6 +49,11 @@ public class PlayerController : MonoBehaviour
         if (canLook)
         {
             CameraLook();
+        }
+
+        if (!firstCamera)
+        {
+            AdjustThirdCamera();
         }
     }
 
@@ -116,5 +125,55 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
+    }
+
+    public void OnSwitchView(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if (context.control.name == "1")
+            {
+                SwitchFirstView();
+            }
+            else if (context.control.name == "2")
+            {
+                SwitchThirdView();
+            }
+        }
+    }
+
+    private void SwitchFirstView()
+    {
+        firstCamera = true;
+        mainCamera.transform.SetParent(cameraContainer);
+        mainCamera.transform.localPosition = Vector3.zero;
+        mainCamera.transform.localRotation = Quaternion.identity;
+    }
+
+    private void SwitchThirdView()
+    {
+        firstCamera = false;
+        mainCamera.transform.SetParent(thirdCamera);
+        mainCamera.transform.localPosition = Vector3.zero;
+        mainCamera.transform.localRotation = Quaternion.identity;
+    }
+
+    void AdjustThirdCamera()
+    {
+        Vector3 desiredCameraPos = thirdCamera.position; // 기본 위치
+        Vector3 direction = (thirdCamera.position - transform.position).normalized; // 방향 계산
+        float distance = Vector3.Distance(transform.position, thirdCamera.position); // 거리 계산
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction, out hit, distance, groundLayerMask))
+        {
+            // 벽이 감지되면 카메라를 벽 앞으로 이동
+            mainCamera.transform.position = hit.point + (direction * 0.2f);
+        }
+        else
+        {
+            // 충돌이 없으면 원래 위치로 복귀
+            mainCamera.transform.position = desiredCameraPos;
+        }
     }
 }
