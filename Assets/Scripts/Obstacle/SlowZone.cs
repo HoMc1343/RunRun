@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlowZone : MonoBehaviour
 {
-    public float slowFactor = 0.7f; // 속도를 얼마나 줄일지 설정
+    public float slowFactor = 0.2f; // 속도를 얼마나 줄일지 설정
     private bool isPlayerSlowed = false; // 플레이어의 속도 감소 상태 추적
 
     private void OnTriggerEnter(Collider other)
