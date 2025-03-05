@@ -1061,13 +1061,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490643921}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 1, z: -2.149}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 1, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 485822735}
-  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!20 &490643924
 Camera:
   m_ObjectHideFlags: 0
@@ -1129,6 +1129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 536298566}
   - component: {fileID: 536298567}
+  - component: {fileID: 536298568}
   m_Layer: 0
   m_Name: SlowZone
   m_TagString: Untagged
@@ -1172,6 +1173,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.7068815, y: 2.7041683, z: 3.0907917}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &536298568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536298565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae05bc4e7e47491e9e367a44b90b622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowFactor: 0.2
 --- !u!1 &554289461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,7 +1937,7 @@ Transform:
   m_GameObject: {fileID: 770132212}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.85, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2221,8 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae05bc4e7e47491e9e367a44b90b622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowMultiplier: 0.5
-  transitionDuration: 0.5
+  slowFactor: 0.5
 --- !u!4 &1031091695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1021826422970944747, guid: c42c7690629734de580c1f47e50de5b6, type: 3}
@@ -2343,6 +2356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049970713}
   - component: {fileID: 1049970714}
+  - component: {fileID: 1049970715}
   m_Layer: 0
   m_Name: SlowZone (2)
   m_TagString: Untagged
@@ -2386,6 +2400,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.7068815, y: 2.7041683, z: 3.0907917}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1049970715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049970712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae05bc4e7e47491e9e367a44b90b622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowFactor: 0.2
 --- !u!1 &1065378711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,7 +3084,7 @@ GameObject:
   - component: {fileID: 1621752911}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3071,7 +3098,7 @@ Transform:
   m_GameObject: {fileID: 1621752909}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.02, y: 21.87, z: 24.63}
+  m_LocalPosition: {x: 33.02, y: 22.17, z: 24.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3236,7 +3263,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1621752915
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3259,7 +3286,7 @@ CapsuleCollider:
   m_Radius: 0.25
   m_Height: 1.7
   m_Direction: 1
-  m_Center: {x: 0, y: 0.85, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1668658122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,6 +3599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1847264871}
   - component: {fileID: 1847264872}
+  - component: {fileID: 1847264873}
   m_Layer: 0
   m_Name: SlowZone (3)
   m_TagString: Untagged
@@ -3615,6 +3643,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.7068815, y: 2.7041683, z: 3.0907917}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1847264873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847264870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae05bc4e7e47491e9e367a44b90b622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowFactor: 0.2
 --- !u!1 &1884350914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,6 +3876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2026295229}
   - component: {fileID: 2026295230}
+  - component: {fileID: 2026295231}
   m_Layer: 0
   m_Name: SlowZone (1)
   m_TagString: Untagged
@@ -3878,6 +3920,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.7068815, y: 2.7041683, z: 3.0907917}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2026295231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026295228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae05bc4e7e47491e9e367a44b90b622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowFactor: 0.2
 --- !u!1 &2107394053
 GameObject:
   m_ObjectHideFlags: 0

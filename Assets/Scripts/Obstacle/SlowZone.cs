@@ -4,49 +4,32 @@ using UnityEngine;
 
 public class SlowZone : MonoBehaviour
 {
-    [Header("Slow Zone Settings")]
-    public float slowMultiplier = 0.5f; // 감속 비율 (0.5배)
-    public float transitionDuration = 0.5f; // 속도 변화가 적용되는 시간
+    public float slowFactor = 0.7f; // 속도를 얼마나 줄일지 설정
+    private bool isPlayerSlowed = false; // 플레이어의 속도 감소 상태 추적
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isPlayerSlowed) // 플레이어가 들어왔고 아직 느려지지 않았을 때
         {
-            PlayerController player = other.GetComponent<PlayerController>();
-            if (player != null)
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerController != null)
             {
-                StopAllCoroutines(); // 중복 실행 방지
-                StartCoroutine(ChangeSpeed(player, slowMultiplier));
+                playerController.moveSpeed *= slowFactor; // 속도 감소
+                isPlayerSlowed = true; // 상태 변경
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isPlayerSlowed) // 플레이어가 나갔고 이미 속도가 느려졌을 때
         {
-            PlayerController player = other.GetComponent<PlayerController>();
-            if (player != null)
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerController != null)
             {
-                StopAllCoroutines(); // 중복 실행 방지
-                StartCoroutine(ChangeSpeed(player, 1f)); // 원래 속도로 복구
+                playerController.moveSpeed /= slowFactor; // 원래 속도로 복구
+                isPlayerSlowed = false; // 상태 변경
             }
         }
-    }
-
-    IEnumerator ChangeSpeed(PlayerController player, float targetMultiplier)
-    {
-        float initialSpeed = player.moveSpeed;
-        float targetSpeed = player.moveSpeed * targetMultiplier;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < transitionDuration)
-        {
-            player.moveSpeed = Mathf.Lerp(initialSpeed, targetSpeed, elapsedTime / transitionDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        player.moveSpeed = targetSpeed; // 최종 속도 설정
     }
 }
