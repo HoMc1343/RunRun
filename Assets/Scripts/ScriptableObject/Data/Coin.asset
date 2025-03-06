@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1680cbb4a2f4e3297b7310b8bfb774, type: 3}
+  m_Name: Coin
+  m_EditorClassIdentifier: 
+  displayName: Coin
+  description: Going To CoinBox
+  type: 0
+  icon: {fileID: 21300000, guid: 54c41751728624ea1819ccdb54fcb147, type: 3}
+  dropPrefab: {fileID: 2279890152703740666, guid: 6e038cb17200244cab611cc050f40c36, type: 3}
+  canStack: 1
+  maxStackAmount: 100

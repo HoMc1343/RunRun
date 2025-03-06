@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotatingObject : MonoBehaviour
 {
-    public float rotationSpeed = 30f;  // 회전 속도
+    public float rotationSpeed;  // 회전 속도
 
     // 회전 축을 선택할 수 있는 Enum 정의
     public enum RotationAxis
