@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Interaction : MonoBehaviour
 
     public TextMeshProUGUI promptText;
     private Camera camera;
+
+    public Safe currentSafe;
+    public InputField passwordInput;
+
     void Start()
     {
         camera = Camera.main;
@@ -23,16 +28,16 @@ public class Interaction : MonoBehaviour
 
     void Update()
     {
-        if(Time.time - lastCheckTime > checkRate)
+        if (Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
 
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
+            if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
-                if(hit.collider.gameObject != curInteractGameObject)
+                if (hit.collider.gameObject != curInteractGameObject)
                 {
                     curInteractGameObject = hit.collider.gameObject;
                     curInteractable = hit.collider.GetComponent<IInteractable>();
@@ -46,6 +51,12 @@ public class Interaction : MonoBehaviour
                 promptText.gameObject.SetActive(false);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F) && currentSafe != null)
+        {
+            string enteredPassword = passwordInput.text;
+            currentSafe.EnterPassword(enteredPassword);
+        }
     }
     private void SetPromptText()
     {
@@ -55,12 +66,28 @@ public class Interaction : MonoBehaviour
 
     public void OnInteractInput(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && curInteractable != null)
+        if (context.phase == InputActionPhase.Started && curInteractable != null)
         {
             curInteractable.OnInteract();
             curInteractGameObject = null;
             curInteractable = null;
             promptText.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Escape"))
+        {
+            currentSafe = other.GetComponent<Safe>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Escape"))
+        {
+            currentSafe = null;
         }
     }
 }
