@@ -18,7 +18,7 @@ public class Interaction : MonoBehaviour
     public TextMeshProUGUI promptText;
     private Camera camera;
 
-    public Safe currentSafe;
+    private Safe currentSafe;
     public InputField passwordInput;
 
     void Start()

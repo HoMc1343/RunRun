@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class Safe : MonoBehaviour
 {
+    [Header("Safe Settings")]
     public string correctPassword = "pkw";
     private string inputPassword = "";
 
+    [Header("Safe Components")]
     public GameObject safeDoor;
-    public GameObject itemInside;
+    public GameObject insideItem;
     public Animator doorAnimator;
+    public SafeUI safeUI;
 
     private bool isUnlocked = false;
+    public bool IsUnlocked => isUnlocked;
 
     private void Start()
     {
-        itemInside.SetActive(false);
+        insideItem.SetActive(false);
     }
 
     public void EnterPassword(string input)
@@ -30,24 +34,16 @@ public class Safe : MonoBehaviour
         }
         else
         {
-            Debug.Log("비밀번호가 틀렸습니다.");
+            Debug.Log("비밀번호가 틀렸습니다");
         }
     }
 
-    private void UnlockSafe()
+    public void UnlockSafe()
     {
+        if (isUnlocked) return;
         isUnlocked = true;
-        Debug.Log("금고가 열렸습니다!");
 
-        if (doorAnimator != null)
-        {
-            doorAnimator.SetTrigger("Open");
-        }
-        else
-        {
-            safeDoor.transform.rotation = Quaternion.Euler(0, 90, 0); 
-        }
-
-        itemInside.SetActive(true);
+        doorAnimator.SetTrigger("Open");
+        insideItem.SetActive(true);
     }
 }
