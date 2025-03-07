@@ -206,7 +206,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7447930401542854529, guid: 81bf23dbd004e49ad8b3b3fdefc38cb6, type: 3}
   firePoint: {fileID: 17246025}
   rotationSpeed: 5
-  fireRate: 2
+  fireRate: 1
 --- !u!135 &35898660
 SphereCollider:
   m_ObjectHideFlags: 0

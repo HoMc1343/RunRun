@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f; // 투사체 속도
-    public float destroyTime = 5f; // 5초 뒤 삭제
-
-    private Rigidbody rb;
+    public float speed = 20f;
+    public float knockbackForce = 100f; // 밀려나는 힘
+    public float lifetime = 5f; // 5초 후 삭제
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        Destroy(gameObject, lifetime);
+    }
 
-        if (rb != null)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            rb.velocity = transform.forward * speed; // 투사체를 앞쪽으로 이동
-        }
+            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
 
-        Destroy(gameObject, destroyTime); // 5초 뒤 삭제
+            if (playerRb != null)
+            {
+                Vector3 knockbackDirection = (collision.transform.position - transform.position).normalized;
+                playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+            }
+        }
     }
 }
