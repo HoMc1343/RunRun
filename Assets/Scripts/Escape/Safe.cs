@@ -12,7 +12,6 @@ public class Safe : MonoBehaviour
     public GameObject safeDoor;
     public GameObject insideItem;
     public Animator doorAnimator;
-    public SafeUI safeUI;
 
     private bool isUnlocked = false;
     public bool IsUnlocked => isUnlocked;
