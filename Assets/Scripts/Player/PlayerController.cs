@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
 
     [Header("Look")]
-    public Transform cameraContainer;
-    public Transform thirdCamera;
+    public Transform cameraContainer; // 카메라 위치
+    public Transform thirdCamera; // 3인칭 카메라
     public Camera mainCamera; // 현재 활성화된 카메라
-    private bool firstCamera = true;
+    private bool firstCamera = true; // 1인칭 카메라
     public float minXLook;
     public float maxXLook;
     private float camCurXRot;

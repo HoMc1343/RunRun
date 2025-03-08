@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public float knockbackForce = 100f; // 밀려나는 힘
+    public float knockbackForce = 300f; // 밀려나는 힘
     public float lifetime = 5f; // 5초 후 삭제
 
     private void Start()
@@ -17,12 +17,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
+            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>(); // 플레이어의 Rigidbody
 
             if (playerRb != null)
             {
-                Vector3 knockbackDirection = (collision.transform.position - transform.position).normalized;
-                playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+                Vector3 knockbackDirection = (collision.transform.position - transform.position).normalized; // 드론과 플레이어의 위치 차이를 계산하여 반동 방향 설정
+                playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse); // 넉백 적용
             }
         }
     }
