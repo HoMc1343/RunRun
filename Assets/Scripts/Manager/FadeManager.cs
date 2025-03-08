@@ -38,31 +38,31 @@ public class FadeManager : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        float alpha = 1f;
-        fadeImage.color = new Color(0, 0, 0, alpha);
+        float alpha = 1f; // 불투명한 상태로 시작
+        fadeImage.color = new Color(0, 0, 0, alpha); // 알파값 적용
 
         while (alpha > 0)
         {
-            alpha -= Time.deltaTime / fadeDuration;
-            fadeImage.color = new Color(0, 0, 0, alpha);
+            alpha -= Time.deltaTime / fadeDuration; // 알파값 감소
+            fadeImage.color = new Color(0, 0, 0, alpha); // 색상 업데이트 (밝아짐)
             yield return null;
         }
         
-        fadeImage.color = new Color(0, 0, 0, 0); // 알파값 정확히 0으로 설정
+        fadeImage.color = new Color(0, 0, 0, 0); // 알파값 정확히 0으로 설정 (투명)
     }
 
-    private IEnumerator FadeOut(string sceneName)
+    private IEnumerator FadeOut(string sceneName) // 씬 전환
     {
-        float alpha = 0f;
-        fadeImage.color = new Color(0, 0, 0, alpha);
+        float alpha = 0f; // 투명한 상태로 시작
+        fadeImage.color = new Color(0, 0, 0, alpha); // 알파값 적용
 
         while (alpha < 1)
         {
-            alpha += Time.deltaTime / fadeDuration;
-            fadeImage.color = new Color(0, 0, 0, alpha);
+            alpha += Time.deltaTime / fadeDuration; // 알파값 증가
+            fadeImage.color = new Color(0, 0, 0, alpha); // 색상 업데이트 (어두워짐)
             yield return null;
         }
 
-        SceneManager.LoadScene(sceneName); // 씬 변경
+        SceneManager.LoadScene(sceneName); // 페이드 효과 종료 후 씬 전환
     }
 }

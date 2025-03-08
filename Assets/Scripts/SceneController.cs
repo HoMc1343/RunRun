@@ -7,7 +7,7 @@ public class SceneController : MonoBehaviour
 {
     public void StartGame()
     {
-        FadeManager.Instance.LoadSceneWithFade("MainScene"); // 페이드아웃과 함께 메인 씬으로..
+        FadeManager.Instance.LoadSceneWithFade("FirstScene"); // 페이드아웃과 함께 메인 씬으로..
     }
 
     // public void GoToLastScene()
@@ -15,9 +15,9 @@ public class SceneController : MonoBehaviour
     //     FadeManager.Instance.LoadSceneWithFade("LastScene");
     // }
 
-    // public void ReturnToStartScene()
+    // public void ReturnToMainScene()
     // {
-    //     FadeManager.Instance.LoadSceneWithFade("StartScene");
+    //     FadeManager.Instance.LoadSceneWithFade("MainScene");
     // }
 
     public void OpenOptions()
