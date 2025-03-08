@@ -180,6 +180,16 @@ public class UIInventory : MonoBehaviour
 
     void RemoveSelctedItem()
     {
+        if (selectedItemIndex < 0 || selectedItemIndex >= slots.Length)
+        {
+            return;
+        }
+
+        if (slots[selectedItemIndex].item == null)
+        {
+            return;
+        }
+
         slots[selectedItemIndex].quantity--;
 
         if (slots[selectedItemIndex].quantity <= 0)

@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour
     public bool canLook = true;
     public Action inventory;
 
-    private Rigidbody rigidbody;
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Started && IsGrounded())
         {
-            rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
 
@@ -83,9 +83,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
-        dir.y = rigidbody.velocity.y;
+        dir.y = _rigidbody.velocity.y;
 
-        rigidbody.velocity = dir;
+        _rigidbody.velocity = dir;
     }
 
     public void OnLookInput(InputAction.CallbackContext context)
