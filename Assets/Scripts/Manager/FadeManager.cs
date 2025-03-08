@@ -36,7 +36,7 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(FadeOut(sceneName));
     }
 
-    private IEnumerator FadeIn()
+    private IEnumerator FadeIn() // 씬 진입
     {
         float alpha = 1f; // 불투명한 상태로 시작
         fadeImage.color = new Color(0, 0, 0, alpha); // 알파값 적용

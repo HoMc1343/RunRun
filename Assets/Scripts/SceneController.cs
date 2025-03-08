@@ -5,23 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public void StartGame()
+    public static SceneController Instance; // Singleton 인스턴스
+
+    private void Awake()
     {
-        FadeManager.Instance.LoadSceneWithFade("FirstScene"); // 페이드아웃과 함께 메인 씬으로..
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // 씬 전환 시 파괴되지 않도록 설정
+        }
+        else
+        {
+            Destroy(gameObject); // 이미 인스턴스가 존재하면 파괴
+        }
     }
 
-    // public void GoToLastScene()
-    // {
-    //     FadeManager.Instance.LoadSceneWithFade("LastScene");
-    // }
-
-    // public void ReturnToMainScene()
-    // {
-    //     FadeManager.Instance.LoadSceneWithFade("MainScene");
-    // }
-
-    public void OpenOptions()
+    public void StartGame()
     {
-        Debug.Log("Option 버튼 클릭됨!"); // 추후 개발 요망
+        FadeManager.Instance.LoadSceneWithFade("FirstScene");
+    }
+
+    public void GoToLastScene()
+    {
+        FadeManager.Instance.LoadSceneWithFade("LastScene");
+    }
+
+    public void ReturnToMainScene()
+    {
+        FadeManager.Instance.LoadSceneWithFade("MainScene");
     }
 }
