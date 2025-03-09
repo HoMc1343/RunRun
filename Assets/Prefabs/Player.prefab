@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 7585892212545081275}
   - component: {fileID: 1889158330669604885}
   - component: {fileID: 4978117385198344044}
+  - component: {fileID: -1501838967903976695}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -533,6 +534,18 @@ MonoBehaviour:
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 0}
   passwordInput: {fileID: 0}
+--- !u!114 &-1501838967903976695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296106941262735032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8afc303473f46299b4c991e3f8c5a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6261274494588447152
 GameObject:
   m_ObjectHideFlags: 0

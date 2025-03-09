@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5877457792034779294}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: ReturnToMainScene
         m_Mode: 1
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5877457792034779294}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: CloseOptionMenu
         m_Mode: 1
@@ -623,14 +623,14 @@ GameObject:
   - component: {fileID: 3847593319263786331}
   - component: {fileID: 4165043775206475330}
   - component: {fileID: 1834235628534121838}
-  - component: {fileID: 5877457792034779294}
+  - component: {fileID: 6690797218300340344}
   m_Layer: 0
   m_Name: InGameMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2680439772131540337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5877457792034779294
+--- !u!114 &6690797218300340344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -724,10 +724,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8063181589117316804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d6ab61b2b82641d28de96d3920ba8f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 541b03713ccfe4fee849b9611b7f5878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionMenuPanel: {fileID: 791649752060500221}
 --- !u!1 &8737251185790863066
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +848,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5877457792034779294}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: OpenOptionMenu
         m_Mode: 1
