@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public string targetScene; // 이동할 씬
-    public string portalTag;   // 포탈 태그
+    public string targetScene;
+    public string portalTag;
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneController.Instance.UsePortal(targetScene, transform.position + new Vector3(0, -4f, 0), portalTag);
+            GameManager.Instance.SavePortalData(transform.position, portalTag);
+            GameManager.Instance.SetDefaultSpawnPosition(targetScene);
+            SceneController.Instance.UsePortal(targetScene, GameManager.Instance.spawnPosition, portalTag);
         }
     }
 }

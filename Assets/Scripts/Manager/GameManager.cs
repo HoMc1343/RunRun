@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public Vector3 spawnPosition = Vector3.zero; // 스폰 좌표
-    public string lastPortalTag = ""; // 마지막 사용 포탈
+    public Vector3 spawnPosition;
+
+    private Vector3 firstPosition = new Vector3(35, 1, -11);
+    private Vector3 lastPosition = new Vector3(-90, 1, -90);
 
     private void Awake()
     {
@@ -22,9 +24,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetDefaultSpawnPosition(string sceneName)
+    {
+        if (sceneName == "FirstScene")
+        {
+            spawnPosition = firstPosition;
+        }
+        else if (sceneName == "LastScene")
+        {
+            spawnPosition = lastPosition;
+        }
+    }
+
     public void SavePortalData(Vector3 position, string portalTag)
     {
         spawnPosition = position;
-        lastPortalTag = portalTag;
     }
 }

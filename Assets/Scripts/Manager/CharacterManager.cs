@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -37,6 +36,13 @@ public class CharacterManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Start()
@@ -50,7 +56,13 @@ public class CharacterManager : MonoBehaviour
                 _player = playerObj.AddComponent<Player>();
             }
         }
+    }
 
-        _player.transform.position = GameManager.Instance.spawnPosition;
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (_player != null)
+        {
+            _player.transform.position = GameManager.Instance.spawnPosition;
+        }
     }
 }
