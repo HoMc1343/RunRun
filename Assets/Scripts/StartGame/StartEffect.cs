@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartEffect : MonoBehaviour
 {
     public Light directionalLight;
-    public GameObject arrow;
+    public GameObject[] arrow;
     private bool isFading = false;
 
     private float targetIntensity = 1.0f; // 밝기
@@ -37,7 +37,11 @@ public class StartEffect : MonoBehaviour
             if (directionalLight.intensity >= targetIntensity && RenderSettings.fogDensity <= targetFogDensity && 
                 Mathf.Abs(directionalLight.transform.rotation.eulerAngles.x - targetRotationX) < 0.1f) // 각 값이 거의 도달했는지 확인
             {
-                arrow.SetActive(false); // 화살표 삭제
+                foreach (GameObject obj in arrow)
+                {
+                    obj.SetActive(false); // 화살표 비활성화
+                }
+                
                 isFading = false; // 전환 종료
             }
         }
