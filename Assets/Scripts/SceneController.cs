@@ -16,7 +16,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // 이미 인스턴스가 존재하면 파괴
+            Destroy(gameObject);
         }
     }
 
@@ -33,5 +33,11 @@ public class SceneController : MonoBehaviour
     public void ReturnToMainScene()
     {
         FadeManager.Instance.LoadSceneWithFade("MainScene");
+    }
+
+    public void UsePortal(string sceneName, Vector3 spawnPosition, string portalTag)
+    {
+        GameManager.Instance.SavePortalData(spawnPosition, portalTag);
+        FadeManager.Instance.LoadSceneWithFade(sceneName);
     }
 }

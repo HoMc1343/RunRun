@@ -9,9 +9,11 @@ public class CharacterManager : MonoBehaviour
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
-                _instance = new GameObject("CharacerManager").AddComponent<CharacterManager>();
+                GameObject obj = new GameObject("CharacterManager");
+                _instance = obj.AddComponent<CharacterManager>();
+                DontDestroyOnLoad(obj);
             }
             return _instance;
         }
@@ -26,17 +28,29 @@ public class CharacterManager : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (_instance != this)
         {
-            if(_instance != this)
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        if (_player == null)
+        {
+            _player = FindObjectOfType<Player>();
+            if (_player == null)
             {
-                Destroy(gameObject);
+                GameObject playerObj = new GameObject("Player");
+                _player = playerObj.AddComponent<Player>();
             }
         }
+
+        _player.transform.position = GameManager.Instance.spawnPosition;
     }
 }
