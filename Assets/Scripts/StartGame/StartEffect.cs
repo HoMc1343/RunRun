@@ -18,6 +18,7 @@ public class StartEffect : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isFading) // 플레이어 인식
         {
+            SoundManager.Instance.PlaySound(8);
             isFading = true; // 전환 개시
         }
     }

@@ -16,6 +16,7 @@ public class Portal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySound(9);
             GameManager.Instance.SavePortalData(transform.position, portalTag);
             GameManager.Instance.SetDefaultSpawnPosition(targetScene);
             SceneController.Instance.UsePortal(targetScene, GameManager.Instance.spawnPosition, portalTag);
