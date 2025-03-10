@@ -9,8 +9,8 @@ public class Portal : MonoBehaviour
     private bool lighting = true; // 발광
     private float lightingSpeed = 2f; // 발광 속도
 
-    public string targetScene;
-    public string portalTag;
+    public string targetScene; // 포탈이 향할 씬
+    public string portalTag; // 현재 포탈 위치
     
     private void OnTriggerEnter(Collider other)
     {
@@ -21,8 +21,6 @@ public class Portal : MonoBehaviour
             SceneController.Instance.UsePortal(targetScene, GameManager.Instance.spawnPosition, portalTag);
         }
     }
-
-
 
     void Update()
     {

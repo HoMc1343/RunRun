@@ -49,12 +49,6 @@ public class Interaction : MonoBehaviour
                 promptText.gameObject.SetActive(false);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.F) && currentSafe != null)
-        {
-            string enteredPassword = passwordInput.text;
-            currentSafe.EnterPassword(enteredPassword);
-        }
     }
     private void SetPromptText()
     {

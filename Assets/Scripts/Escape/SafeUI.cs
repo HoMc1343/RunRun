@@ -12,8 +12,9 @@ public class SafeUI : MonoBehaviour
     public Button enterButton;
     
     public Safe safe;
-    public PlayerController playerController;
 
+    public PlayerController playerController;
+    
     private CursorLockMode previousCursorLockState;
     private bool previousCursorVisible;
 
