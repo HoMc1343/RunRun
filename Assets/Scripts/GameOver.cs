@@ -27,6 +27,7 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
+        SoundManager.Instance.PlaySound(2);
 
         if (gameOverUI != null)
         {

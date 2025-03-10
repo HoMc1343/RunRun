@@ -8,18 +8,34 @@ public class Dron : MonoBehaviour
     public Transform firePoint; // 발사 위치
     public float rotationSpeed = 5f; // 회전 속도
     public float fireRate = 2f; // 발사 간격 (2초)
+    public float maxSoundDistance = 10f; // 소리가 최대 크기를 유지하는 거리
+    public float minSoundDistance = 30f; // 소리가 완전히 사라지는 거리
+    public AudioSource droneAudioSource; // 드론의 오디오 소스
 
     private Transform player;
     private bool isPlayerInRange = false; // 플레이어 감지 여부
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player")?.transform; // 플레이어의 위치 인식
+        player = GameObject.FindGameObjectWithTag("Player")?.transform; // 플레이어 찾기
         StartCoroutine(FireRoutine()); // 2초마다 발사 시도
+
+        if (droneAudioSource == null)
+        {
+            droneAudioSource = gameObject.AddComponent<AudioSource>();
+            droneAudioSource.loop = true;
+            droneAudioSource.spatialBlend = 1f; // 3D 사운드 설정
+            droneAudioSource.Play();
+        }
     }
 
     private void Update()
     {
+        if (player != null)
+        {
+            AdjustSoundVolume(); // 거리 기반 볼륨 조정
+        }
+
         if (isPlayerInRange && player != null)
         {
             LookAtPlayer();
@@ -67,6 +83,25 @@ public class Dron : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
+        }
+    }
+
+    private void AdjustSoundVolume()
+    {
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance <= maxSoundDistance)
+        {
+            droneAudioSource.volume = 1f; // 최대 볼륨
+        }
+        else if (distance >= minSoundDistance)
+        {
+            droneAudioSource.volume = 0f; // 소리 없음
+        }
+        else
+        {
+            float t = 1f - ((distance - maxSoundDistance) / (minSoundDistance - maxSoundDistance));
+            droneAudioSource.volume = Mathf.Lerp(0f, 1f, t);
         }
     }
 }

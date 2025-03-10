@@ -35,6 +35,7 @@ public class ItemSlot : MonoBehaviour
         icon.gameObject.SetActive(true);
         icon.sprite = item.icon;
         quantityText.text = quantity > 1 ? quantity.ToString() : string.Empty;
+        SoundManager.Instance.PlaySound(0);
 
         if(outline != null)
         {

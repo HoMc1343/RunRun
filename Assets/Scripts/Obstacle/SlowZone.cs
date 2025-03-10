@@ -15,6 +15,7 @@ public class SlowZone : MonoBehaviour
             if (playerController != null)
             {
                 playerController.moveSpeed *= slowFactor; // 속도 감소
+                SoundManager.Instance.PlaySound(6);
                 isPlayerSlowed = true; // 상태 변경
             }
         }

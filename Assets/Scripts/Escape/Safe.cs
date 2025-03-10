@@ -43,6 +43,7 @@ public class Safe : MonoBehaviour
         isUnlocked = true;
 
         doorAnimator.SetTrigger("Open");
+        SoundManager.Instance.PlaySound(5);
         insideItem.SetActive(true);
     }
 }

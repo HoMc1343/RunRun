@@ -16,6 +16,7 @@ public class SuperJump : MonoBehaviour
             {
                 playerController.jumpPower *= jumpPower; // 점프 증가
                 isPlayerJump = true; // 상태 변경
+                SoundManager.Instance.PlaySound(7);
             }
         }
     }

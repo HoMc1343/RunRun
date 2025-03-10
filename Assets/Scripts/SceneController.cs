@@ -33,6 +33,7 @@ public class SceneController : MonoBehaviour
     public void ReturnToMainScene()
     {
         FadeManager.Instance.LoadSceneWithFade("MainScene");
+        SoundManager.Instance.PlaySound(0);
     }
 
     public void UsePortal(string sceneName, Vector3 spawnPosition, string portalTag)

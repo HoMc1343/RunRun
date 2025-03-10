@@ -29,6 +29,7 @@ public class PortalDoor : MonoBehaviour
     {
         isUnlocked = true;
         animator.SetTrigger("Open");
+        SoundManager.Instance.PlaySound(4);
     }
 
     private void UpdateCoinCountText() // 코인 텍스트 업데이트
