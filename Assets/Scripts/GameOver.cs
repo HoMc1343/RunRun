@@ -5,9 +5,14 @@ public class GameOver : MonoBehaviour
     public float overPosY = -10;
     public GameOverUI gameOverUI;
 
-    private void Start()
+    private void Awake()
     {
         gameOverUI = FindObjectOfType<GameOverUI>();
+    }
+
+    private void Start()
+    {
+        gameOverUI.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -21,11 +26,7 @@ public class GameOver : MonoBehaviour
     private void IsGameOver()
     {
         Time.timeScale = 0f;
-
-        if (gameOverUI == null)
-        {
-            gameOverUI = FindObjectOfType<GameOverUI>();
-        }
+        Cursor.lockState = CursorLockMode.None;
 
         if (gameOverUI != null)
         {
