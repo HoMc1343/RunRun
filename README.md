@@ -38,9 +38,9 @@
 
 * 인게임 UI
 
-|![스크린샷 2025-03-09 23 59 49](https://github.com/user-attachments/assets/6b665b64-afc7-4e36-9027-129e4f9212d8)|![스크린샷 2025-03-10 00 00 35](https://github.com/user-attachments/assets/53079c6a-0a03-4459-8490-2d568e27d2d0)|![스크린샷 2025-03-10 00 00 51](https://github.com/user-attachments/assets/10c86f89-055d-41fd-b015-b1d61be46f20)|
-|:---:|:---:|:---:|
-|인벤토리|금고 잠금|인게임 옵션 창|
+|![스크린샷 2025-03-09 23 59 49](https://github.com/user-attachments/assets/6b665b64-afc7-4e36-9027-129e4f9212d8)|![스크린샷 2025-03-10 00 00 35](https://github.com/user-attachments/assets/53079c6a-0a03-4459-8490-2d568e27d2d0)|![스크린샷 2025-03-10 00 00 51](https://github.com/user-attachments/assets/10c86f89-055d-41fd-b015-b1d61be46f20)|![스크린샷 2025-03-10 20 57 49](https://github.com/user-attachments/assets/981ed28f-08ff-4568-b14a-e2ccbe3deb2c)|
+|:---:|:---:|:---:|:---:|
+|인벤토리|금고 잠금|인게임 옵션 창|사망|
 
 |![스크린샷 2025-03-10 19 44 36](https://github.com/user-attachments/assets/7c29804a-ccd4-43a0-bbc1-1c13d5858963)|![스크린샷 2025-03-10 19 47 55](https://github.com/user-attachments/assets/c60eb41a-1026-47d0-8680-61899735786f)|
 |:---:|:---:|
